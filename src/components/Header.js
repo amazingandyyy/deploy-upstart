@@ -28,22 +28,22 @@ class Header extends Component {
         return (
             <nav className="navbar navbar-light bg-faded navbar-toggleable-xl navbar-inverse fixed-top">
             <Link className="navbar-brand" to="/">Athons</Link>
-                <span  className="float-left">
-                    <ul className="nav navbar-nav">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/hack">Hack</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/secret">Secret</Link>
-                        </li>
-                    </ul>
-                </span>
-                <span className="pull-xs-right">
-                    <ul className="nav navbar-nav">
-                        {this.renderSignButton()}
-                    </ul>
-                </span>
-                </nav>
+            <span className="float-left">
+                <ul className="nav navbar-nav">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/hack">Hack</Link>
+                    </li>
+                    
+                </ul>
+            </span>
+            <span className="float-right">
+                <ul className="nav navbar-nav">
+                    <li className="nav-item">
+                        <a target="_blank" href="https://github.com/amazingandyyy/athons">github</a>
+                    </li>      
+                </ul>
+            </span>
+            </nav>
         )
     }
 }
@@ -55,3 +55,14 @@ function mapStateToProps({auth}){
 }
 
 export default connect(mapStateToProps, actions)(Header)
+
+
+// <li className="nav-item">
+//     <Link className="nav-link" to="/secret">Secret</Link>
+// </li>
+
+// <span className="pull-xs-right">
+//     <ul className="nav navbar-nav">
+//         {this.renderSignButton()}
+//     </ul>
+// </span>
