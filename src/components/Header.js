@@ -1,51 +1,57 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 import { Link } from 'react-router';
-const db = require('../../database/queries/db');
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { id: null };
-  }
-
-  componentWillMount() {
-    this.setLink();
-  }
-
-  setLink() {
-    const index = _.random(0, db.length);
-    this.setState({ id: index });
-  }
-
-  render() {
-    return (
-      <div className="row">
-        <nav>
-          <div className="nav-wrapper">
-            <div className="col s12">
-              <a href="#" className="brand-logo">UpStar Music</a>
-              <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li>
-                  <Link
-                    to={`/artists/${this.state.id}`}
-                    onClick={this.setLink.bind(this)}
-                  >
-                    Random Artist
-                  </Link>
+    renderSignButton(){
+        if (this.props.authenticated){
+            return (
+                <li className="nav-item">
+                    <Link className="nav-link" to="/signout">Signout</Link>
                 </li>
-                <li>
-                  <Link to={'/artists/new'}>
-                    Create Artist
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    );
-  }
-};
+            )
+        }else{
+            return (
+                [
+                    <li className="nav-item active" key="1">
+                        <Link to="/signin" className="nav-link">Signin</Link>
+                    </li>,
+                    <li className="nav-item" key="2">
+                        <Link to="/signup" className="nav-link">SignUp</Link>
+                    </li>
+                ]
+            )
+        }
+    }
+    render() {
+        return (
+            <nav className="navbar navbar-light bg-faded navbar-toggleable-xl navbar-inverse fixed-top">
+            <Link className="navbar-brand" to="/">Athons</Link>
+                <span  className="float-left">
+                    <ul className="nav navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/hack">Hack</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/secret">Secret</Link>
+                        </li>
+                    </ul>
+                </span>
+                <span className="pull-xs-right">
+                    <ul className="nav navbar-nav">
+                        {this.renderSignButton()}
+                    </ul>
+                </span>
+                </nav>
+        )
+    }
+}
 
-export default Header;
+function mapStateToProps({auth}){
+    return {
+        authenticated: auth.authenticated
+    }
+}
+
+export default connect(mapStateToProps, actions)(Header)

@@ -1,14 +1,13 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-import filterCriteriaReducer from './FilterCriteriaReducer';
-import ArtistsReducer from './ArtistsReducer';
-import ErrorReducer from './ErrorReducer';
-import SelectionReducer from './SelectionReducer';
+import { reducer as form } from 'redux-form'
 
-export default combineReducers({
-  form: formReducer,
-  filterCriteria: filterCriteriaReducer,
-  artists: ArtistsReducer,
-  errors: ErrorReducer,
-  selection: SelectionReducer
+import auth from './auth_reducer';
+import hackathons from './hackathons_reducer';
+
+const rootReducer = combineReducers({
+  form,
+  auth,
+  hackathons
 });
+
+export default rootReducer;
