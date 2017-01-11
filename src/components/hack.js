@@ -10,7 +10,7 @@ class Hack extends Component {
   }
   renderHackathons() {
     if (this.props.hackathons.hackathons) {
-      console.log('hey', this.props.hackathons.hackathons.events[0])
+      // console.log('hey', this.props.hackathons.hackathons.events[0])
       return this
         .props
         .hackathons
@@ -45,7 +45,7 @@ class Hack extends Component {
     return (
       <div className="hack">
         <div className="container">
-          <h1>Hack around @San Francisco</h1>
+          <p className="title">Hack</p>
           <div className="list-group">
             {this.renderHackathons()}
           </div>

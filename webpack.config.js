@@ -31,23 +31,37 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/
       }, {
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader', 'css-loader', 'sass-loader'
+        ],
         test: /\.scss$/
+      }, {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file'
+      }, {
+        test: /\.(woff|woff2)$/,
+        loader: 'url?prefix=font/&limit=5000'
+      }, {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      }, {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest']
-    }),
-    new HtmlWebpackPlugin({
-      template: 'src/index.html'
-    }),
+    new webpack
+      .optimize
+      .CommonsChunkPlugin({
+        names: ['vendor', 'manifest']
+      }),
+    new HtmlWebpackPlugin({template: 'src/index.html'}),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
-    })
+    new webpack
+      .optimize
+      .UglifyJsPlugin({sourceMap: true})
   ]
 };

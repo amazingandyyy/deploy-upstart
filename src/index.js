@@ -28,10 +28,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component= {App}>
-        <IndexRoute component= {Home} />
+        <IndexRoute component= {Hack} />
         <Route path="/hack" component= {Hack} />
         <Route path="/secret" component= {RequireAuth(Secret)} />
-
         <Route path="/signin" component= {Signin} />
         <Route path="/signup" component= {Signup} />
         <Route path="/signout" component= {Signout} />

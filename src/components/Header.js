@@ -26,24 +26,12 @@ class Header extends Component {
     }
     render() {
         return (
-            <nav className="navbar navbar-light bg-faded navbar-toggleable-xl navbar-inverse fixed-top">
-            <Link className="navbar-brand" to="/">Athons</Link>
-            <span className="float-left">
-                <ul className="nav navbar-nav">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/hack">Hack</Link>
-                    </li>
-                    
-                </ul>
-            </span>
-            <span className="float-right">
-                <ul className="nav navbar-nav">
-                    <li className="nav-item">
-                        <a target="_blank" href="https://github.com/amazingandyyy/athons">github</a>
-                    </li>      
-                </ul>
-            </span>
-            </nav>
+					<div className="header">
+						<div className="container">
+							<div className="logo-text">Athons</div>
+                            <div className="icon-genius"></div>
+						</div>
+					</div>
         )
     }
 }
@@ -56,6 +44,25 @@ function mapStateToProps({auth}){
 
 export default connect(mapStateToProps, actions)(Header)
 
+
+// <nav className="navbar navbar-light bg-faded navbar-toggleable-xl navbar-inverse fixed-top">
+// <Link className="navbar-brand" to="/">Athons</Link>
+// <span className="float-left">
+//     <ul className="nav navbar-nav">
+//         <li className="nav-item">
+//             <Link className="nav-link" to="/hack">Hack</Link>
+//         </li>
+        
+//     </ul>
+// </span>
+// <span className="float-right">
+//     <ul className="nav navbar-nav">
+//         <li className="nav-item">
+//             <a target="_blank" href="https://github.com/amazingandyyy/athons">github</a>
+//         </li>      
+//     </ul>
+// </span>
+// </nav>
 
 // <li className="nav-item">
 //     <Link className="nav-link" to="/secret">Secret</Link>
